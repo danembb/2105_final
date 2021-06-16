@@ -22,4 +22,5 @@ class Train
       car_type.weight * quantity
     end
   end
+
 end

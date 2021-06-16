@@ -47,5 +47,10 @@ RSpec.describe TrainYard do
 
       expect(@train_yard.trains).to eq([@train1, @train2, @train3, @train4])
     end
+
+    it "#types_of_trains can return each train type in a trainyard in alphabetical order" do
+
+      expect(@train_yard.types_of_trains).to eq(["Express", "Tank", "Tender"])
+    end
   end
 end
