@@ -12,4 +12,8 @@ class Train
   def count_cars(car_type)
     @cargo[car_type]
   end
+
+  def add_cars(car_type, quantity)
+    @cargo[car_type] += quantity
+  end
 end
