@@ -4,6 +4,8 @@ require "./lib/train"
 RSpec.describe Train do
   before :each do
     @train1 = Train.new({name: 'Thomas', type: 'Tank'})
+    @car1 = Car.new({type: 'Mail', weight: 5})
+    @car2 = Car.new({type: 'Passengers', weight: 1})
   end
 
   describe "instantiation" do
@@ -17,6 +19,13 @@ RSpec.describe Train do
       expect(@train1.name).to eq("Thomas")
       expect(@train1.type).to eq("Tank")
       expect(@train1.cargo).to eq({})
+    end
+  end
+
+  describe "methods" do
+    it "#count_cars() can count the number of cars on a train" do
+
+      expect(@train1.count_cars(@car1)).to eq(0)
     end
   end
 end
