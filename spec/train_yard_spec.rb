@@ -16,6 +16,43 @@ RSpec.describe TrainYard do
     it "has attributes" do
 
       expect(@train_yard.location).to eq("Brighton")
+      expect(@train_yard.trains).to eq([])
     end
+  end
+
+  describe "methods" do
+    before :each do
+      @car1 = Car.new({type: 'Mail', weight: 5})
+      @car2 = Car.new({type: 'Passengers', weight: 1})
+      @car3 = Car.new({type: 'Cattle', weight: 3})
+      @car4 = Car.new({type: 'Dining', weight: 4})
+      @train1 = Train.new({name: 'Thomas', type: 'Tank'})
+      @train2 = Train.new({name: 'Emily', type: 'Tender'})
+      @train3 = Train.new({name: 'Nia', type: 'Tank'})
+      @train4 = Train.new({name: 'Gordon', type: 'Express'})
+      @train1.add_cars(@car1, 5)
+      @train1.add_cars(@car2, 2)
+      @train2.add_cars(@car1, 3)
+      @train2.add_cars(@car4, 4)
+      @train3.add_cars(@car1, 1)
+      @train4.add_cars(@car4, 5)
+      @train4.add_cars(@car3, 10)
+      @train_yard.add_train(@train1)
+      @train_yard.add_train(@train2)
+      @train_yard.add_train(@train3)
+      @train_yard.add_train(@train4)
+    end
+
+    it "#add_train can add a train to a ::trainyards trains" do
+
+      expect(@train_yard.trains).to eq([@train1, @train2, @train3, @train4])
+
+    end
+
+    # it "#weight can sum the collective weight of a trains cars" do
+    #
+    #   expect()
+    #
+    # end
   end
 end
