@@ -30,4 +30,15 @@ class TrainYard
       end
     end.uniq.sort
   end
+
+  def total_cars
+    @trains.sum do |train|
+      train.cargo.
+    end
+  end
+
+  def total_inventory
+    hash = Hash.new
+    hash[@trains.cargo] =
+  end
 end
