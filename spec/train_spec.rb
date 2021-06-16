@@ -1,5 +1,6 @@
 require "./lib/car"
 require "./lib/train"
+require "./lib/train_yard"
 
 RSpec.describe Train do
   before :each do
@@ -39,6 +40,24 @@ RSpec.describe Train do
       @train1.add_cars(@car2, 10)
 
       expect(@train1.cargo).to eq({@car1 => 5, @car2 => 10})
+    end
+
+    it "#weight can sum the collective weight of a trains cars" do
+      @car3 = Car.new({type: 'Cattle', weight: 3})
+      @car4 = Car.new({type: 'Dining', weight: 4})
+      @train2 = Train.new({name: 'Emily', type: 'Tender'})
+      @train3 = Train.new({name: 'Nia', type: 'Tank'})
+      @train4 = Train.new({name: 'Gordon', type: 'Express'})
+      @train1.add_cars(@car1, 5)
+      @train1.add_cars(@car2, 2)
+      @train2.add_cars(@car1, 3)
+      @train2.add_cars(@car4, 4)
+      @train3.add_cars(@car1, 1)
+      @train4.add_cars(@car4, 5)
+      @train4.add_cars(@car3, 10)
+
+      expect(@train1.weight).to eq(27)
+      expect(@train2.weight).to eq(31)
     end
   end
 end

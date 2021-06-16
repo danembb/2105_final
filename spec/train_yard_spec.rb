@@ -46,13 +46,6 @@ RSpec.describe TrainYard do
     it "#add_train can add a train to a ::trainyards trains" do
 
       expect(@train_yard.trains).to eq([@train1, @train2, @train3, @train4])
-
     end
-
-    # it "#weight can sum the collective weight of a trains cars" do
-    #
-    #   expect()
-    #
-    # end
   end
 end
